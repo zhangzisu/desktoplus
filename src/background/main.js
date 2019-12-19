@@ -3,6 +3,7 @@
 
 import { BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
+import { setBlurBehind } from 'electron-wallpaper-napi'
 
 /** @type {BrowserWindow} */
 let win
@@ -15,8 +16,12 @@ export function createMainWindow() {
     height: 600,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    transparent: true,
+    frame: false
   })
+
+  setBlurBehind(win, 0x14800020)
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     win.loadURL(process.env.WEBPACK_DEV_SERVER_URL + 'index.html')
