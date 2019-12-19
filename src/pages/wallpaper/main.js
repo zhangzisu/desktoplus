@@ -1,10 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import App from '@/pages/wallpaper/app.vue'
+import '@/pages/wallpaper/styles/main.css'
 
 Vue.config.productionTip = false
 
 new Vue({
-  router,
   render: h => h(App)
 }).$mount('#app')
