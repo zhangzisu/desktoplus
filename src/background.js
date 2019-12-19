@@ -15,6 +15,7 @@ protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: tru
 
 function createTray () {
   const contextMenu = Menu.buildFromTemplate([
+    { label: 'Reload', click: () => { createWallpaperWindow() } },
     { label: 'Quit', click: () => { app.quit() } }
   ])
   tray = new Tray(join(__static, 'favicon.ico'))

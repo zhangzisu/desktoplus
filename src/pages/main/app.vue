@@ -1,6 +1,8 @@
 <template>
   <div>
     <z-header/>
+    <main>
+    </main>
   </div>
 </template>
 
@@ -15,20 +17,17 @@ export default {
 </script>
 
 <style>
-#app {
-  margin: 5px;
+main {
+  position: absolute;
+  top: 32px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(255, 255, 255, 0.5);
+  overflow-y: scroll;
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.test {
+  width: 100px;
+  height: 2000px;
 }
 </style>
