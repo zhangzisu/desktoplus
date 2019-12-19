@@ -1,14 +1,15 @@
 <template>
   <div>
+    <z-header/>
   </div>
 </template>
 
 <script>
-import { remote } from 'electron'
+import ZHeader from '@/pages/main/components/header.vue'
 
 export default {
-  mounted () {
-    remote.getCurrentWindow().webContents.openDevTools()
+  components: {
+    ZHeader
   }
 }
 </script>
