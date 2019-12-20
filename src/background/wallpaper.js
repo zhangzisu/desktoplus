@@ -9,6 +9,7 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 let win
 
 export function createWallpaperWindow() {
+  win && win.close()
   const { width, height } = screen.getPrimaryDisplay().workAreaSize
 
   win = new BrowserWindow({
@@ -35,4 +36,9 @@ export function createWallpaperWindow() {
   win.on('closed', () => {
     win = null
   })
+}
+
+export function closeWallpaperWindow() {
+  if (!win) return
+  win.close()
 }

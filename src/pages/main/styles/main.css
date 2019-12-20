@@ -8,3 +8,11 @@ html {
 body {
   background: transparent;
 }
+
+.navbar {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.notification {
+  background: rgba(245, 245, 245, 0.9);
+}

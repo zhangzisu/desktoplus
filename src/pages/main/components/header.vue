@@ -1,16 +1,19 @@
 <template>
   <div class="header" style="-webkit-app-region: drag">
+    <div class="title">
+      DesktoPlus
+    </div>
     <div @click="dev" class="item" style="-webkit-app-region: no-drag">
-      <b-icon icon="settings" size="32px" type="is-white"/>
+      <b-icon icon="settings" type="is-white"/>
     </div>
     <div @click="minimize" class="item" style="-webkit-app-region: no-drag">
-      <b-icon icon="minus" size="32px" type="is-white"/>
+      <b-icon icon="minus" type="is-white"/>
     </div>
     <div @click="maximize" class="item" style="-webkit-app-region: no-drag">
-      <b-icon icon="plus" size="32px" type="is-white"/>
+      <b-icon icon="plus" type="is-white"/>
     </div>
-    <div @click="close" class="item" style="-webkit-app-region: no-drag">
-      <b-icon icon="close" size="32px" type="is-white"/>
+    <div @click="close" class="item close" style="-webkit-app-region: no-drag">
+      <b-icon icon="close" type="is-white"/>
     </div>
   </div>
 </template>
@@ -55,6 +58,7 @@ export default {
   justify-content: flex-end;
   align-items: center;
   background: rgba(0,0,0,0.3);
+  user-select: none;
 }
 .item {
   cursor: pointer;
@@ -63,6 +67,20 @@ export default {
   transition: 0.3s;
 }
 .item:hover {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
+}
+.close:hover {
+  background: rgba(192, 57, 43, 0.5);
+}
+.item:active {
+  background: rgba(0, 0, 0, 1);
+  transform: scale(0.96);
+}
+.title {
+  flex-grow: 1;
+  margin: 0 !important;
+  text-align: center;
+  font-size: 16px;
+  color: white;
 }
 </style>

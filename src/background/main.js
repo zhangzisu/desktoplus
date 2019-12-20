@@ -9,7 +9,7 @@ import { setBlurBehind } from 'electron-wallpaper-napi'
 let win
 
 export function createMainWindow() {
-  if (win) return
+  win && win.close()
 
   win = new BrowserWindow({
     width: 800,

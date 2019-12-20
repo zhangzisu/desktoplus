@@ -25,10 +25,10 @@ export default {
   methods: {
     updateTime () {
       const now = new Date()
-      const hou = now.getHours().toString(16).padStart(2, '0')
-      const min = now.getMinutes().toString(16).padStart(2, '0')
-      const sec = now.getSeconds().toString(16).padStart(2, '0')
-      this.time = `${hou}_${min}_${sec}`.toUpperCase()
+      const hou = now.getHours().toString().padStart(2, '0')
+      const min = now.getMinutes().toString().padStart(2, '0')
+      const sec = now.getSeconds().toString().padStart(2, '0')
+      this.time = `${hou}:${min}:${sec}`.toUpperCase()
     }
   }
 }
@@ -47,6 +47,7 @@ export default {
   top: 15px;
   right: 15px;
   font-size: 10em;
-  font-family: 'Courier New', Courier, monospace
+  font-family: 'Courier New', Courier, monospace;
+  background: rgba(255, 255, 255, 0.7);
 }
 </style>

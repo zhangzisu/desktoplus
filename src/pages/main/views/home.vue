@@ -1,11 +1,12 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../../../assets/logo.png">
+  <div class="container">
+    <b-button>Close wallpaper</b-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'home'
+  name: 'Home'
+
 }
 </script>
