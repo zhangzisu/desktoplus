@@ -1,9 +1,10 @@
+// @ts-check
 'use strict'
 
 import { join } from 'path'
-import { app, protocol, Tray, Menu } from 'electron'
+import { app, protocol, Tray, Menu, ipcMain } from 'electron'
 import { createMainWindow } from '@/background/main.js'
-import { createWallpaperWindow } from '@/background/wallpaper.js'
+import { createWallpaperWindow, sendWallpaperWindow } from '@/background/wallpaper.js'
 
 /* global __static */
 
@@ -13,13 +14,14 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 let tray
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }])
 
-function createTray() {
+function createTray () {
   const contextMenu = Menu.buildFromTemplate([
     { label: 'Reload Main', click: () => { createMainWindow() } },
     { label: 'Reload Wallpaper', click: () => { createWallpaperWindow() } },
     { label: 'Quit', click: () => { app.quit() } }
   ])
-  tray = new Tray(join(__static, 'favicon.ico'))
+  // @ts-ignore
+  tray = new Tray(join(__static, 'logo.png'))
   tray.setContextMenu(contextMenu)
   tray.on('double-click', () => {
     createMainWindow()
@@ -27,10 +29,8 @@ function createTray() {
 }
 
 if (app.requestSingleInstanceLock()) {
-  app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-      app.quit()
-    }
+  app.on('window-all-closed', (e) => {
+    e.preventDefault()
   })
 
   app.on('activate', () => {
@@ -64,6 +64,11 @@ if (app.requestSingleInstanceLock()) {
       })
     }
   }
+
+  ipcMain.on('wallpaper-cmd', (e, ...args) => {
+    const ch = args.shift()
+    sendWallpaperWindow(ch, ...args)
+  })
 } else {
   app.exit()
 }

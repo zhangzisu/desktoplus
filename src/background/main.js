@@ -1,14 +1,17 @@
 // @ts-check
 'use strict'
 
+import { join } from 'path'
 import { BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import { setBlurBehind } from 'electron-wallpaper-napi'
 
+/* global __static */
+
 /** @type {BrowserWindow} */
 let win
 
-export function createMainWindow() {
+export function createMainWindow () {
   win && win.close()
 
   win = new BrowserWindow({
@@ -18,7 +21,9 @@ export function createMainWindow() {
       nodeIntegration: true
     },
     transparent: true,
-    frame: false
+    frame: false,
+    // @ts-ignore
+    icon: join(__static, 'logo.png')
   })
 
   setBlurBehind(win, 0x14800020)
@@ -35,7 +40,7 @@ export function createMainWindow() {
   })
 }
 
-export function closeMainWindow() {
+export function closeMainWindow () {
   if (!win) return
   win.close()
 }

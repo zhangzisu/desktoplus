@@ -1,12 +1,18 @@
 <template>
   <div class="container">
-    <b-button>Close wallpaper</b-button>
+    <b-button @click="closeWp">Close wallpaper</b-button>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Home'
+import { closeWallpaperWindow } from '@/pages/main/rpc'
 
+export default {
+  name: 'Home',
+  methods: {
+    closeWp () {
+      closeWallpaperWindow()
+    }
+  }
 }
 </script>

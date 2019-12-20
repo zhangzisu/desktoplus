@@ -1,14 +1,17 @@
 // @ts-check
 'use strict'
 
+import { join } from 'path'
 import { BrowserWindow, screen } from 'electron'
 import { attachWindow } from 'electron-wallpaper-napi'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 
+/* global __static */
+
 /** @type {BrowserWindow} */
 let win
 
-export function createWallpaperWindow() {
+export function createWallpaperWindow () {
   win && win.close()
   const { width, height } = screen.getPrimaryDisplay().workAreaSize
 
@@ -21,7 +24,9 @@ export function createWallpaperWindow() {
       nodeIntegration: true
     },
     transparent: true,
-    frame: false
+    frame: false,
+    // @ts-ignore
+    icon: join(__static, 'logo.png')
   })
 
   attachWindow(win)
@@ -38,7 +43,15 @@ export function createWallpaperWindow() {
   })
 }
 
-export function closeWallpaperWindow() {
+export function closeWallpaperWindow () {
   if (!win) return
   win.close()
+}
+
+/**
+ * @param {string} channel
+ * @param {any[]} args
+ */
+export function sendWallpaperWindow (channel, ...args) {
+  win && win.webContents.send(channel, ...args)
 }

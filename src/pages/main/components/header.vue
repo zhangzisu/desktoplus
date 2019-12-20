@@ -3,17 +3,17 @@
     <div class="title">
       DesktoPlus
     </div>
-    <div @click="dev" class="item" style="-webkit-app-region: no-drag">
-      <b-icon icon="settings" type="is-white"/>
+    <div class="item" style="-webkit-app-region: no-drag" @click="dev">
+      <b-icon icon="settings" type="is-white" />
     </div>
-    <div @click="minimize" class="item" style="-webkit-app-region: no-drag">
-      <b-icon icon="minus" type="is-white"/>
+    <div class="item" style="-webkit-app-region: no-drag" @click="minimize">
+      <b-icon icon="minus" type="is-white" />
     </div>
-    <div @click="maximize" class="item" style="-webkit-app-region: no-drag">
-      <b-icon icon="plus" type="is-white"/>
+    <div class="item" style="-webkit-app-region: no-drag" @click="maximize">
+      <b-icon icon="plus" type="is-white" />
     </div>
-    <div @click="close" class="item close" style="-webkit-app-region: no-drag">
-      <b-icon icon="close" type="is-white"/>
+    <div class="item close" style="-webkit-app-region: no-drag" @click="close">
+      <b-icon icon="close" type="is-white" />
     </div>
   </div>
 </template>
