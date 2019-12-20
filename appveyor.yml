@@ -1,0 +1,35 @@
+skip_commits:
+  message: /(\[skip ci\])/
+
+branches:
+  only:
+    - master
+
+environment:
+  GH_TOKEN:
+    secure: /BGde185RyklcrqzXMN4FCnFW9oOCYxbM0oHHWq/2C6vXKKCmJuj00eyo6etkcLt
+
+image: Visual Studio 2019
+
+platform:
+  - x64
+
+cache:
+  - node_modules
+  - '%USERPROFILE%\.electron'
+  - '%LOCALAPPDATA%\Yarn'
+
+init:
+  - git config --global core.autocrlf input
+
+install:
+  - ps: Install-Product node 12 x64
+  - npm i -g npm
+  - npm i -g yarn
+  - yarn
+
+build_script:
+  - yarn generate-icons
+  - yarn build
+
+test: off
