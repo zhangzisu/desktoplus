@@ -38,8 +38,10 @@ export function createWallpaperWindow () {
     win.loadURL('app://./wallpaper.html')
   }
 
+  const id = win.id
+
   win.on('closed', () => {
-    win = null
+    if (win.id === id) win = null
   })
 }
 

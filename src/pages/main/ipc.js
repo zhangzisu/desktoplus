@@ -12,3 +12,11 @@ function sendWallpaperCmd (channel, ...args) {
 export function closeWallpaperWindow () {
   sendWallpaperCmd('close')
 }
+
+export function detachWallpaperWindow () {
+  sendWallpaperCmd('detach')
+}
+
+export function attachWallpaperWindow () {
+  sendWallpaperCmd('attach')
+}

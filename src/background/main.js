@@ -35,8 +35,10 @@ export function createMainWindow () {
     win.loadURL('app://./index.html')
   }
 
+  const id = win.id
+
   win.on('closed', () => {
-    win = null
+    if (win.id === id) win = null
   })
 }
 
