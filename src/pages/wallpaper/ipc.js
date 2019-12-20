@@ -14,3 +14,7 @@ ipcRenderer.on('detach', () => {
 ipcRenderer.on('attach', () => {
   attachWindow(win)
 })
+
+ipcRenderer.on('dev', () => {
+  win.webContents.openDevTools()
+})

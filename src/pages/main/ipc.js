@@ -20,3 +20,7 @@ export function detachWallpaperWindow () {
 export function attachWallpaperWindow () {
   sendWallpaperCmd('attach')
 }
+
+export function WallpaperWindowOpenDevTools () {
+  sendWallpaperCmd('dev')
+}

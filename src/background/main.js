@@ -10,9 +10,11 @@ import { setBlurBehind } from 'electron-wallpaper-napi'
 
 /** @type {BrowserWindow} */
 let win
+/** @type {number} */
+let wid
 
 export function createMainWindow () {
-  win && win.close()
+  closeMainWindow()
 
   win = new BrowserWindow({
     width: 800,
@@ -36,13 +38,13 @@ export function createMainWindow () {
   }
 
   const id = win.id
+  wid = id
 
   win.on('closed', () => {
-    if (win.id === id) win = null
+    if (wid === id) win = null
   })
 }
 
 export function closeMainWindow () {
-  if (!win) return
-  win.close()
+  win && win.close()
 }

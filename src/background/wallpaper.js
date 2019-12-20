@@ -10,9 +10,11 @@ import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 
 /** @type {BrowserWindow} */
 let win
+/** @type {number} */
+let wid
 
 export function createWallpaperWindow () {
-  win && win.close()
+  closeWallpaperWindow()
   const { width, height } = screen.getPrimaryDisplay().workAreaSize
 
   win = new BrowserWindow({
@@ -21,9 +23,9 @@ export function createWallpaperWindow () {
     x: 0,
     y: 0,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      webSecurity: false
     },
-    transparent: true,
     frame: false,
     // @ts-ignore
     icon: join(__static, 'logo.png')
@@ -39,15 +41,15 @@ export function createWallpaperWindow () {
   }
 
   const id = win.id
+  wid = id
 
   win.on('closed', () => {
-    if (win.id === id) win = null
+    if (wid === id) win = null
   })
 }
 
 export function closeWallpaperWindow () {
-  if (!win) return
-  win.close()
+  win && win.close()
 }
 
 /**
