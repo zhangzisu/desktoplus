@@ -15,6 +15,7 @@
   "main": "background.js",
   "dependencies": {
     "@mdi/font": "^4.7.95",
+    "animejs": "^3.1.0",
     "buefy": "^0.8.8",
     "core-js": "^3.4.3",
     "electron-wallpaper-napi": "^0.0.5",

@@ -2,27 +2,25 @@
   <div class="wallpaper" :style="style">
     <div class="wallpaper-detail">
       {{ copyright }}
+      <b-progress size="is-large" :value="timer" :show-value="false" />
     </div>
   </div>
 </template>
 
 <script>
+import anime from 'animejs'
+
 export default {
   name: 'Wallpaper',
   data: () => ({
     img: '',
     copyright: '',
     style: {},
-    interval: null
+    interval: null,
+    timer: 50
   }),
   mounted () {
     this.loadImg()
-    this.interval = setInterval(() => {
-      this.loadImg()
-    }, 5 * 1000)
-  },
-  beforeDestroy () {
-    this.interval && clearInterval(this.interval)
   },
   methods: {
     loadImg () {
@@ -32,6 +30,17 @@ export default {
         .then(res => {
           this.style.backgroundImage = `url('${res.url}')`
           this.copyright = res.copyright
+          this.timer = 0
+          anime({
+            targets: this,
+            timer: 100,
+            duration: 60000,
+            easing: 'easeInQuad',
+            complete: () => {
+              this.timer = undefined
+              this.loadImg()
+            }
+          })
         })
     }
   }
@@ -58,5 +67,7 @@ export default {
   backdrop-filter: blur(5px);
   color: white;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1rem;
+  width: 30rem;
 }
 </style>

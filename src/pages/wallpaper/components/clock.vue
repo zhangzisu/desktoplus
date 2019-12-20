@@ -37,7 +37,9 @@ export default {
   position: absolute;
   top: 15px;
   right: 15px;
-  font-size: 10em;
+  font-size: 10rem;
+  line-height: 7rem;
+  padding-top: 0.6rem;
   font-family: 'Courier New', Courier, monospace;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
