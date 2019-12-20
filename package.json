@@ -2,6 +2,8 @@
   "name": "desktoplus",
   "version": "0.1.0",
   "private": true,
+  "description": "Electron based dynamic wallpaper for win32",
+  "author": "ZhangZisu <admin@zhangzisu.cn>",
   "scripts": {
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service electron:build",
